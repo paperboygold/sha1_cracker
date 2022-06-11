@@ -6,8 +6,8 @@ https://github.com/skerkour/black-hat-rust
 
 ## Usage
 
-Usage: sha1_cracker <hash> <wordlist>
+Usage: `sha1_cracker <hash> <wordlist>`
 
 ## Example
   
-sha1_cracker 1234567890123456789012345678901234567890 dictionary.txt
+`sha1_cracker 1234567890123456789012345678901234567890 dictionary.txt`
