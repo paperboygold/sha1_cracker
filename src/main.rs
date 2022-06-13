@@ -15,7 +15,9 @@ use std::{
     io::{BufRead, BufReader},
 };
 
+// Declare the expected hash length of 40 characters for later comparison
 const HASH_LENGTH: usize = 40;
+
 fn main() -> Result<(), Box<dyn Error>> {
     // Collect arguments
     let args: Vec<String> = env::args().collect();
@@ -27,13 +29,13 @@ fn main() -> Result<(), Box<dyn Error>> {
         return Ok(());
     }
     
-    // Check entered hash length
+    // Check the length of the supplied hash against HASH_LENGTH
     let hash = args[2].trim();
     if hash.len() != HASH_LENGTH {
         return Err("Hash must be 40 characters long".into());
     }
 
-    // Open wordlist
+    // Load wordlist into memory
     let wordlist = File::open(&args[1])?;
     let reader = BufReader::new(&wordlist);
 
@@ -49,7 +51,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         }
     }
 
-    // If the wordlist is empty, the password was not found
+    // If the above does not return Ok, then the password was not found
     println!("Password not found.");
 
     Ok(())
